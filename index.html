@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50vw; /* Could be more or less, depending on screen size */
+  	text-align:center;
+	border-radius:5px;
+}
+/* modal main*/
+#modal-main{
+	font-size:5vw;
+}
+/*x or y */
+#x-or-o{
+	margin:auto;
+	width:30vw;
+	display:inline-grid;
+	grid-template-columns: 1fr 1fr;
+	font-size:7vw;
+	column-gap:10%;
+}
+#modal-x,#modal-o{
+	display:grid;
+	border:solid 3px;
+	height: 50%;
+	align-self:center;
+	justify-items:center;
+	align-items:center;
+}
+</style>
+
+</head>
+<body>
+<div>szöveg</div>
+
+<!-- The Modal -->
+<div id="intro-modal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    
+    <p id="modal-main">Please choose !</p>
+    <div id="x-or-o">
+			<p id="modal-x">X</p>
+    	<p id="modal-o">O</p>
+		</div>
+  </div>
+
+</div>
+<script>
+//as soon as the page is fully loaded the modal box kicks in
+function listening(event){
+	let id = event.toElement.id;
+	console.log(id);
+	if(id==="modal-x" || id==="modal-o"){
+		modals.stopIntroModal();
+	}
+}
+// modal object, all of the modals attributes are on this object
+const modals = {
+	startIntroModal() {
+		let modal = document.getElementById("intro-modal");
+		modal.style.display = "block";
+  },
+	stopIntroModal(){
+		let modal = document.getElementById("intro-modal");
+		modal.style.display = "none";
+	}
+}
+
+modals.startIntroModal();
+window.onload = function(){
+  window.addEventListener('click',listening);
+};
+
+</script>
+</body>
+</html>
+
